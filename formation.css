@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+  }
+.navp{
+ display: flex;
+justify-content: space-between;
+background-color: #209097;
+height: 80px;
+
+ }
+ .icon{
+    display: flex;
+    align-items: center;
+ }
+ .logout{
+    display: flex;
+    align-items: center;
+  
+ }
+.logout a{
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+}
+.section1{
+ display: flex;
+flex-direction: row;
+align-items: center;
+padding: 50px;
+}
+.navbar{
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px 63px;
+gap: 58px;
+background: rgba(32, 144, 151, 0.29);
+width: 100%;
+height: 70px;
+}
+.navbar :hover{
+    background-color: #146971;
+    color: white;
+
+}
+.navbar a{
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+}
+.section2{
+    display: flex;
+        justify-content: center;
+        align-items: center;
+}
+.card1{
+    display: flex;
+flex-direction: column;
+align-items: center;
+padding: 18px 0px;
+background: rgba(43, 181, 192, 0.54);
+border-radius: 20px;
+width: 500px;
+gap:12px;
+
+}
+.validation{
+    display: flex;
+flex-direction: row;
+justify-content: center;
+
+}
+
+.vl{
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+
+    border: 5px !important;
+    border-color: #146971;
+    width: 100px;
+    height: 30px;
+    /* background-color: #146971; */
+}
