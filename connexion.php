@@ -1,3 +1,7 @@
+<?php 
+require 'connect.php';
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,3 +33,36 @@
         </form>
     </div>
     </div>
+<?php
+
+if (isset($_POST['submit'])) {
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+
+  if ($conn->connect_error) {
+    die('Connection failed: ' . $conn->connect_error);
+  }
+  $sql = "SELECT * FROM apprenant WHERE email_app='$email'";
+  $result = $conn->query($sql);
+  if ($result->num_rows == 1) {
+    $user = $result->fetch_assoc();
+    if ($password==$user['password_app']) {
+      session_start();
+
+      
+      $_SESSION['user_id'] = $user['id_app'];
+   
+      // Redirect the user to the home page
+      header('Location: home.php');
+      exit();
+    } else {
+      $error_message = 'Invalid password';
+    } 
+    // else {
+    //   $error_message = 'Invalid username';
+    // }
+  
+  } 
+  }
+?>
+

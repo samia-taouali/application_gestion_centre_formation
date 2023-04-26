@@ -59,8 +59,8 @@ style="
 
                 <option value="" name = "allCategories" >All Categories</option>
 
-                <option value="informatique" name = "informatique" >Informatique</option>
-                <option value="gaming" name = "gaming">Gaming</option>
+                <option value="informatique" name = "informatique" >UI/UX design</option>
+                <option value="gaming" name = "gaming">Artisanat Art</option>
                 <option value="developement" name = "">Developement</option>
 
             </select>
@@ -96,7 +96,16 @@ style="
 
 $formations = "SELECT * FROM formation " ;
 
+if(isset($_GET['filterbtn'])){
 
+  $categories = $_GET['categories'];
+
+  if ($categories != ""){
+
+      $formationssql = "SELECT * FROM formation WHERE categorie = '$categories'";
+}
+}
+else{
 $result = mysqli_query($conn, $formations);
 
 if( mysqli_num_rows ( $result ) > 0 ){
@@ -126,7 +135,7 @@ while($row = mysqli_fetch_assoc($result)) {
 
 echo '</div>';
 }
-
+}
 
 ?>
 
