@@ -1,3 +1,41 @@
+<?php 
+require 'connect.php';
+if(!empty($_SESSION["id_app"])){
+    header("Location: index.php");
+    }
+    if(isset($_POST["submit"])){
+    $firstname = $_POST["firstname"];
+    $lastname = $_POST["lastname"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $confirmpassword = $_POST["confirmpassword"];
+
+
+    $duplicate = mysqli_query ( $conn, "SELECT * FROM apprenant WHERE  email_app = '$email' ");
+
+    if(mysqli_num_rows($duplicate) > 0){
+
+        echo "<script> alert('Email Has Already Taken'); </script>";
+    }
+    else{
+
+        if($password == $confirmpassword){
+        $query = "INSERT INTO apprenant  VALUES('','$firstname','$lastname','$email','$password')";
+        // header("window.Location: login-admin.php");
+
+        mysqli_query($conn, $query);
+
+        echo"<script> alert('Registration Successful'); </script>";
+        }
+        else{
+        echo
+        "<script> alert('Password Does Not Match'); </script>";
+        }
+    }
+}
+
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -38,7 +76,7 @@
           <button class="px-3 btn btn" type = "submit" name = "submit" >S'inscrire</button>
         </div>
         <div class="col-md-6">
-    <div class="inputs"><p>vous avez déjà un compte? <span><a href="login.php" id="word">connectez -vous</a></span></p></div>
+    <div class="inputs"><p>vous avez déjà un compte? <span><a href="connexion.php" id="word">connectez -vous</a></span></p></div>
 </div>
 
         </form>

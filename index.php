@@ -59,9 +59,9 @@ style="
 
                 <option value="" name = "allCategories" >All Categories</option>
 
-                <option value="informatique" name = "informatique" >UI/UX design</option>
-                <option value="gaming" name = "gaming">Artisanat Art</option>
-                <option value="developement" name = "">Developement</option>
+                <option value="design" name = "design" >UI/UX design</option>
+                <option value="test" name = "">Artisanat Art</option>
+                <!-- <option value="developement" name = "">Developement</option> -->
 
             </select>
 
@@ -94,7 +94,7 @@ style="
 <div class=" container " style="">
 <?php
 
-$formations = "SELECT * FROM formation " ;
+$formationssql = "SELECT * FROM formation " ;
 
 if(isset($_GET['filterbtn'])){
 
@@ -105,8 +105,8 @@ if(isset($_GET['filterbtn'])){
       $formationssql = "SELECT * FROM formation WHERE categorie = '$categories'";
 }
 }
-else{
-$result = mysqli_query($conn, $formations);
+
+$result = mysqli_query($conn, $formationssql);
 
 if( mysqli_num_rows ( $result ) > 0 ){
 
@@ -135,7 +135,7 @@ while($row = mysqli_fetch_assoc($result)) {
 
 echo '</div>';
 }
-}
+
 
 ?>
 

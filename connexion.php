@@ -1,7 +1,6 @@
 <?php 
 require 'connect.php';
 ?>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -50,7 +49,7 @@ if (isset($_POST['submit'])) {
       session_start();
 
       
-      $_SESSION['user_id'] = $user['id_app'];
+      $_SESSION['id_app'] = $user['id_app'];
    
       // Redirect the user to the home page
       header('Location: home.php');
@@ -58,9 +57,6 @@ if (isset($_POST['submit'])) {
     } else {
       $error_message = 'Invalid password';
     } 
-    // else {
-    //   $error_message = 'Invalid username';
-    // }
   
   } 
   }

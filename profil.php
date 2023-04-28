@@ -1,8 +1,17 @@
-
 <?php 
-session_start();
-$id_apprenant=$_SESSION['user_id'];
 require 'connect.php';
+
+if(!empty($_SESSION['id_app'])){
+
+    $id_apprenant=$_SESSION['id_app'];
+    $result = mysqli_query($conn, "SELECT * FROM apprenant WHERE id_app = $id_apprenant");
+    $row = mysqli_fetch_assoc($result);
+}
+else{
+    header("Location:index.php");
+}
+
+
 ?>
 <?php
 
@@ -32,7 +41,7 @@ if (isset($_POST["edit"])){
   <div class="icon">
      <a href="home.php"><i class="fa-sharp fa-regular fa-arrow-left" style="color: #ffffff;"></i></a>
   </div>
-    <div class="logout"><a href="index.php"> <i class="fa-regular fa-right-to-bracket"></i>Se déconnecter</a> </div>
+    <div class="logout"><a href="logout_user.php"> <i class="fa-regular fa-right-to-bracket"></i>Se déconnecter</a> </div>
 </div>
 </div>
 <div class="section1">
@@ -46,7 +55,7 @@ if (isset($_POST["edit"])){
     <div class=" formSU text-center">
         <?php
         
-         $sql="SELECT*FROM apprenant WHERE id_app='$id_apprenant'";
+         $sql="SELECT*FROM apprenant WHERE id_app ='$id_apprenant'";
          $result=mysqli_query($conn,$sql);
          while($row=mysqli_fetch_assoc($result)){
             ?>
