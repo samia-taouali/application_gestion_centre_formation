@@ -1,5 +1,14 @@
 <?php 
 require 'connect.php';
+if(!empty($_SESSION['id_app'])){
+
+    $id_apprenant=$_SESSION['id_app'];
+    $result = mysqli_query($conn, "SELECT * FROM apprenant WHERE id_app = $id_apprenant");
+    $row = mysqli_fetch_assoc($result);
+}
+else{
+    header("Location:index.php");
+}
 ?>
 
 
@@ -9,7 +18,7 @@ require 'connect.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="css/home.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </head>
@@ -109,7 +118,7 @@ while($row = mysqli_fetch_assoc($result)) {
 
     echo '
     <div class="col-md-3 ">
-    <form method = "GET" action = "" class=" card  text-center "  style=" background-color: #fffff;">
+    <form method = "GET" action = "details_formation.php" class=" card  text-center "  style=" background-color: #fffff;">
     <div class="card-body">
     <h4 class="card-title">' .$row['sujet']. '</h4>
         <img class="card-img-top" src="img/logo.png" alt="Card image cap">
@@ -132,22 +141,6 @@ echo '</div>';
 
 
 
-
-
-
-
-
-<!-- <div class=" col-md-4 "style="margin : ">
-    <div class="card" style="width: 18rem;">
-    <h5 class="card-title">Card title</h5>
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div> 
-  </div>
-
-</div> -->
 
 
 

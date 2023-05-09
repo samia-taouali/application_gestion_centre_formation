@@ -1,208 +1,74 @@
+<?php 
+require 'connect.php';
+
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formations</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="home.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-
-        
-    <style>
-    
-        @import url('https://fonts.googleapis.com/css2?family=Kavoon&display=swap');
-
-        *{
-            padding: 0;
-            margin: 0;
-        }
-        body{
-            background-color: #F2E4DD;
-        }
-
-        nav{
-            background-color: #E0CBC0;
-            font-family: 'Kavoon', cursive;
-        }
-
-        .latestsProductsdiv{
-            display: flex;
-            justify-content: space-between;
-             /* width: 80%; */
-            margin: 5% auto;
-            
-        }
-
-
-        .card{
-            margin: 3% 0px;
-        }
-
-
-
-
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </head>
-
 <body>
+        <!-- nav -->
+<div class="nav">
+  <div class="logo">
+     <img src="img/logo.png" alt="" srcset="">
+  </div class=>
+    <div class="btns"><i class="fa-regular fa-user"></i><a href="profil.php"> Mon profil</a> </div>
+</div>
+</div>
+
+<!-- result search -->
 
 
+<div class=" container " style="">
+
+<h1 class="text-center mb-5">Resultat</h1>
 <?php
-require 'config.php';
-if(!empty($_SESSION["id_apprenant"])){
-    $id = $_SESSION["id_apprenant"];
-    $result = mysqli_query($conn, "SELECT * FROM apprenant WHERE id_apprenant = $id");
-    $row = mysqli_fetch_assoc($result);
-    ?>
 
-    <!-- ======= Header/Navbar ======= -->
-    <nav class="navbar navbar-default navbar-trans navbar-expand-lg">
-    <div class="container">
-    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+$searchFormation = $_GET['searchFormation'];
 
+$sql = "SELECT * FROM formation WHERE sujet LIKE '%$searchFormation%'";
 
+$result = $conn->query($sql);
 
-    <a class="navbar-brand text-brand" href="home.php">GesFormations</a>
+if( mysqli_num_rows ( $result ) > 0 ){
 
-    <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
-        <ul class="navbar-nav">
+echo ' <div class=" row">';
 
-        <li class="nav-item">
-            <a class="nav-link active" href="home.php">Home</a>
-        </li>
+while($row = mysqli_fetch_assoc($result)) {
 
-        <li class="nav-item">
-            <a class="nav-link " href="Formations.php">Formations</a>
-        </li>
+    $id_formation = $row["id_formation"];
 
-        <li class="nav-item">
-            <a class="nav-link " href="">Contact</a>
-        </li>
-        </ul>
+    echo '
+    <div class="col-md-3 ">
+    <form method = "GET" action = "" class=" card  text-center "  style=" background-color: #fffff;">
+    <div class="card-body">
+    <h4 class="card-title">' .$row['sujet']. '</h4>
+        <img class="card-img-top" src="img/logo.png" alt="Card image cap">
+        <input type="hidden" name="id_formation" type = "submit" value ="'.$id_formation.'">
+        <input class="btn" type="submit" value = "Voir plus" style = "width : 100% ;background-color:#2BB5C0" >
+
     </div>
 
+    </form>
+    </div>';
+
+}
 
 
-    <button class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-target="#loginModal">
-        <a href="Profile-personal.php" style="margin-right: 1rem; color: black; text-decoration :none;"><span><?php echo $row["firstname"] ; ?></span><i class="fa-solid fa-user"></i></a>
-
-        <a href="logout-user.php" style="color: black;"><i class="fa-solid fa-right-from-bracket"></i></a>
-    </button>
-
-    </div>
-</nav>
-<?php
+echo '</div>';
 }
 else{
-    ?>
-    
-    <!-- ======= Header/Navbar ======= -->
-<nav class="navbar navbar-default navbar-trans navbar-expand-lg">
-    <div class="container">
-    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-
-
-    <a class="navbar-brand text-brand" href="home.php">GesFormations</a>
-
-    <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
-        <ul class="navbar-nav">
-
-        <li class="nav-item">
-            <a class="nav-link active" href="home.php">Home</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link " href="Formations.php">Formations</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link " href="">Contact</a>
-        </li>
-        </ul>
-    </div>
-
-
-
-    <button class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-target="#loginModal">
-        <a href="signup.php" class ="btn btn-outline-dark" style="margin-right: 1rem; text-decoration :none;">SignUp</a>
-
-        <a href="login.php" class="btn btn-outline-dark" style="text-decoration :none;">Login</a>
-    </button>
-
-    </div>
-</nav>
-    <?php
+    echo '
+    <div class="alert alert-danger text-center" role="alert">
+  No Results found !
+    </div>';
 }
-?>
-
-<!-- Filter  -->
-
-<div class="filterSearch pt-5 row  text-center" style="width: 70%; margin: auto;"> 
-
-    <div class="searchdiv col-md-4">
-
-        <h1>The Result</h1>
-
-    </div>
-
-
-
-</div>
-
-
-<!-- Filter & Search -->
-
-<div class="albumPrds album ">
-
-
-    <div class="latestsProducts container">
-
-<?php
-
-    $searchFormation = $_GET['searchFormation'];
-
-    $sql = "SELECT * FROM formation WHERE sujet LIKE '%$searchFormation%'";
-    $resultSearch = $conn->query($sql);
-
-    if ($resultSearch->num_rows > 0) {
-        echo ' <div class="latestsProductsdiv row">';
-        while($row = $resultSearch->fetch_assoc()) {
-            $id_formation = $row["id_formation"];
-            echo '
-
-            <form method = "GET" action = "formation-details.php" class=" card col-md-3"  style=" background-color: #DDD9D9;">
-            <div class="card-body">
-                <h4 class="card-title">' .$row['sujet']. '</h4>
-                <p class="card-text"><strong>Categorie :</strong> '  .$row['categorie']. '</p>
-                <p class="card-text"><strong>Masse Horaire :</strong> '  .$row['masse_horaire']. 'h</p>
-                <p class="card-text">'  .$row['description']. '</p>
-        
-                <input type="hidden" name="id_formation" type = "submit" value ="'.$id_formation.'">
-                <input class="btn btn-dark" type="submit" value = "More" style = "width : 50%">
-        
-            </div>
-            
-            </form>';
-        }
-        echo '</div>';
-    } else {
-        echo '<div class="filterSearch pt-5 row  text-center" style="width: 70%; margin: auto;"> 
-
-        <div class="searchdiv col-md-12">
-    
-            <h1>No results found :(</h1>
-    
-        </div>';
-    
-        echo '</div>';
-    }
-    
-      //close database connection
-    $conn->close();
 
 
 ?>
@@ -210,14 +76,9 @@ else{
 
 
 
+
+
+
+
+
 </div>
-</div>
-
-</body>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-<script src="https://kit.fontawesome.com/d78c31e99a.js" crossorigin="anonymous"></script>
-    </html>
-
-
- 
