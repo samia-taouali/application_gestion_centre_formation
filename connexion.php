@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
       $_SESSION['id_app'] = $user['id_app'];
    
       // Redirect the user to the home page
-      header('Location: home.php');
+      header('Location: index.php');
       exit();
     } else {
       $error_message = 'Invalid password';

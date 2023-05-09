@@ -14,14 +14,42 @@ require 'connect.php';
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </head>
 <body>
-        <!-- nav -->
+
+<!-- Nav bar Shape -->
+
+<?php if(!empty($_SESSION["id_app"])){ ?>
+
+  <!-- User nav -->
+
 <div class="nav">
+
+    <div class="logo">
+      <img src="img/logo.png" alt="" srcset="">
+    </div class=>
+
+  <div class="btns"><i class="fa-regular fa-user"></i><a href="profil.php"> Mon profil</a> </div>
+
+</div>
+
+<?php }
+
+else{ ?>
+
+        <!-- Visiteur Nav -->
+
+<div class="nav">
+
   <div class="logo">
      <img src="img/logo.png" alt="" srcset="">
   </div>
+
     <div class="btns"><a href="connexion.php"> Se connecter</a> <a href="inscription.php">S'inscrire</a></div>
+
+
 </div>
-</div>
+
+<?php }?>
+
 <!-- Background image -->
 <div
 class="text-center bg-image"
@@ -31,9 +59,7 @@ style="
   background-repeat: no-repeat;
   background-size: cover;
   height:90vh;
-"
-
->
+">
 <div class=" cover" style="background-color: rgba(32, 144, 151, 0.6) ; " >
   <div class="d-flex justify-content-start align-items-center h-100">
     <div class="titre mx-5">
@@ -118,7 +144,7 @@ while($row = mysqli_fetch_assoc($result)) {
 
     echo '
     <div class="col-md-3 ">
-    <form method = "GET" action = "" class=" card  text-center "  style=" background-color: #fffff;">
+    <form method = "GET" action = "details_formation.php" class=" card  text-center "  style=" background-color: #fffff;">
     <div class="card-body">
     <h4 class="card-title">' .$row['sujet']. '</h4>
         <img class="card-img-top" src="img/logo.png" alt="Card image cap">

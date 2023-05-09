@@ -24,10 +24,10 @@ else{
 <body>
        <!-- nav -->
    <div class="navp">
-  <div class="icon">
-     <a href="home.php"><i class="fa-sharp fa-regular fa-arrow-left" style="color: #ffffff;"></i></a>
+   <div class="icon">
+     <a href="index.php"><i class="fa-solid fa-arrow-left-long fa-xl" style="color: #ffffff;"></i></a>
   </div>
-    <div class="logout"><a href="index.php"> <i class="fa-regular fa-right-to-bracket"></i>Se déconnecter</a> </div>
+  <div class="logout"><a href="logout_user.php"> <i class="fa-solid fa-arrow-right-from-bracket"></i>Se déconnecter</a> </div>
 </div>
 </div>
 
@@ -71,4 +71,5 @@ echo '</div>';
 
     
 </body>
+<script src="https://kit.fontawesome.com/bc08f1cf31.js" crossorigin="anonymous"></script>
 </html>

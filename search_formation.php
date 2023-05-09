@@ -13,14 +13,39 @@ require 'connect.php';
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </head>
 <body>
-        <!-- nav -->
+
+<?php if(!empty($_SESSION["id_app"])){ ?>
+
+<!-- User nav -->
+
 <div class="nav">
+
   <div class="logo">
-     <img src="img/logo.png" alt="" srcset="">
+    <img src="img/logo.png" alt="" srcset="">
   </div class=>
-    <div class="btns"><i class="fa-regular fa-user"></i><a href="profil.php"> Mon profil</a> </div>
+
+<div class="btns"><i class="fa-regular fa-user"></i><a href="profil.php"> Mon profil</a> </div>
+
 </div>
+
+<?php }
+
+else{ ?>
+
+      <!-- Visiteur Nav -->
+
+<div class="nav">
+
+<div class="logo">
+   <img src="img/logo.png" alt="" srcset="">
 </div>
+
+  <div class="btns"><a href="connexion.php"> Se connecter</a> <a href="inscription.php">S'inscrire</a></div>
+
+
+</div>
+
+<?php }?>
 
 <!-- result search -->
 

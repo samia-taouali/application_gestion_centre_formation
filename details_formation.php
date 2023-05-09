@@ -26,14 +26,38 @@ if(!empty($_SESSION['id_app'])){
 </head>
 
 <body>
-    <!-- nav -->
-    <div class="nav">
-        <div class="logo">
-            <img src="img/logo.png" alt="" srcset="">
-        </div class=>
-        <div class="btns"><i class="fa-regular fa-user"></i><a href="profil.php"> Mon profil</a> </div>
-    </div>
-    </div>
+<?php if(!empty($_SESSION["id_app"])){ ?>
+
+<!-- User nav -->
+
+<div class="nav">
+
+  <div class="logo">
+    <img src="img/logo.png" alt="" srcset="">
+  </div class=>
+
+<div class="btns"><i class="fa-regular fa-user"></i><a href="profil.php"> Mon profil</a> </div>
+
+</div>
+
+<?php }
+
+else{ ?>
+
+      <!-- Visiteur Nav -->
+
+<div class="nav">
+
+<div class="logo">
+   <img src="img/logo.png" alt="" srcset="">
+</div>
+
+  <div class="btns"><a href="connexion.php"> Se connecter</a> <a href="inscription.php">S'inscrire</a></div>
+
+
+</div>
+
+<?php }?>
 
 
     <div class=" container " style="">
@@ -109,7 +133,7 @@ $placesReserverData = mysqli_fetch_assoc($placesReserverResult);
 $placesReserver = $placesReserverData['COUNT(*)'];
 
 
-    // if(!empty($_SESSION["id_apprenant"])){
+     if(!empty($_SESSION["id_app"])){
 
         // echo $currentDate;
 
@@ -160,30 +184,30 @@ $placesReserver = $placesReserverData['COUNT(*)'];
         </div>
         </div>';
         
-// }
+ }
 
-// else{
+else{
 
-//     echo ' <div class="card col-md-5" style=" background-color: white;">
+    echo ' <div class="card col-md-12" style=" background-color: white;">
 
-//     <div class="card-body">
-//         <h4 class="card-title">Session ID '.$row["id_session"].'</h4>
-//         <p class="card-text"><strong>Date debut :</strong><span class="greenItems"> ' .$row['date_debut']. ' </span>   |     <strong>Date fin :</strong> <span class="redItems">' .$row['date_fin']. '</span></p>
+    <div class="card-body">
+        <h4 class="card-title">Session ID '.$row["id_session"].'</h4>
+        <p class="card-text"><strong>Date debut :</strong><span class="greenItems"> ' .$row['date_debut']. ' </span>   |     <strong>Date fin :</strong> <span class="redItems">' .$row['date_fin']. '</span></p>
         
-//         <p class="card-text"><strong>Fomateur :</strong> ' .$row['firstname']. ' ' .$row['lastname']. '</p>
-//         <p class="card-text"><strong>Les Places :</strong> <span class="greenItems">' .$row['nombre_places_max'].'</span></p>
-//         <p class="card-text"><strong>Les Places Disponibles :</strong> <span class="redItems">' .$row['nombre_places_max'] - $placesReserver.'</span></p>
-//         <p class="card-text"><strong>Etat :</strong> <span class="greenItems">' .$row['etat']. '</span></p>
+        <p class="card-text"><strong>Fomateur :</strong> ' .$row['prenom_formateur']. ' ' .$row['nom_formateur']. '</p>
+        <p class="card-text"><strong>Les Places :</strong> <span class="greenItems">' .$row['nombre_place_maxi'].'</span></p>
+        <p class="card-text"><strong>Les Places Disponibles :</strong> <span class="redItems">' .$row['nombre_place_maxi'] - $placesReserver.'</span></p>
+        <p class="card-text"><strong>Etat :</strong> <span class="greenItems">' .$row['etat']. '</span></p>
 
-//         <a type="button" href="login.php" class="btn " style =" background-color:#1fae51;color:white;">
-//         Join Session
-//         </a>
+        <a type="button" href="connexion.php" class="btn " style = background-color:#209097;color:white;">
+        Join Session
+        </a>
         
-//     </div>
-//         </div>
-//     ';
+    </div>
+        </div>
+    ';
 
-// }
+}
 
 }
     

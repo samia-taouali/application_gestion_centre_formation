@@ -38,7 +38,7 @@ if (isset($_POST["edit"])){
    <!-- nav -->
    <div class="navp">
   <div class="icon">
-     <a href="home.php"><i class="fa-solid fa-arrow-left-long fa-xl" style="color: #ffffff;"></i></a>
+     <a href="index.php"><i class="fa-solid fa-arrow-left-long fa-xl" style="color: #ffffff;"></i></a>
   </div>
     <div class="logout"><a href="logout_user.php"> <i class="fa-solid fa-arrow-right-from-bracket"></i>Se déconnecter</a> </div>
 </div>
