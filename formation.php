@@ -11,34 +11,46 @@ else{
 }
 ?>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/formation.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
+    </script>
     <title>Document</title>
 </head>
+
 <body>
-       <!-- nav -->
-   <div class="navp">
-   <div class="icon">
-     <a href="index.php"><i class="fa-solid fa-arrow-left-long fa-xl" style="color: #ffffff;"></i></a>
-  </div>
-  <div class="logout"><a href="logout_user.php"> <i class="fa-solid fa-arrow-right-from-bracket"></i>Se déconnecter</a> </div>
-</div>
+    <!-- nav -->
+    <div class="navp">
+        <div class="icon">
+            <a href="index.php"><i class="fa-solid fa-arrow-left-long fa-xl" style="color: #ffffff;"></i></a>
+        </div>
+        <div class="logout"><a href="logout_user.php"> <i class="fa-solid fa-arrow-right-from-bracket"></i>Se
+                déconnecter</a> </div>
+    </div>
+    </div>
+
+    <div class="row profileLinksSection  text-center">
+    
+
+    <div class=" profileLinksdiv col-md-6">    <a href="formation.php" class="profileLinks" style="text-decoration: underline;color : #1fae51;">Formations en cours</a>
+    </div>
+    
+    <div class=" profileLinksdiv col-md-6">    <a href="Profile-formation-passee.php" class="profileLinks" style="color : red;">Formations passées</a>
+    </div>
+
+
+
 </div>
 
-<div class="section1">
-<div class="navbar">
-    <div ><a href="profil.php"> Mes informations</a ></div>
-    <div class=""style="text-decoration:underline;"><a href="formations.php"> Mes formations</a></div>
-</div>
-</div>
-
-<?php
+    <?php
 
 $historique = "SELECT * FROM apprenant_session ms  
 INNER JOIN session s ON s.id_session = ms.id_session
@@ -69,7 +81,8 @@ echo '</div>';
 ?>
 
 
-    
+
 </body>
 <script src="https://kit.fontawesome.com/bc08f1cf31.js" crossorigin="anonymous"></script>
+
 </html>

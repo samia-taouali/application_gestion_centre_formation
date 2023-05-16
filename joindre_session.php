@@ -60,7 +60,7 @@ $num_session = COUNT($num_session_Data);
 
         $checkres = mysqli_query($conn, "SELECT * FROM session WHERE id_session = '$id_session'");
 
-        $sqlres= mysqli_query($conn, "INSERT INTO `apprenant_session`(`id_app`, `id_session`) VALUES ('$id_apprenant', '$id_session')");
+        $sqlres= mysqli_query($conn, "INSERT INTO `apprenant_session` (`id_app`, `id_session`) VALUES ('$id_apprenant', '$id_session')");
 
         echo '<div class="row latestsProductsdiv text-center">
         <h1 class ="col-md-12" style="color : green;">You have Joined The Session :)</h1>

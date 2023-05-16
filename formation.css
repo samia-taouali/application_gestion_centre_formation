@@ -23,21 +23,18 @@ height: 80px;
     text-decoration: none;
     font-size: 30px;
 }
-.section1{
+/* .section1{
  display: flex;
 flex-direction: row;
 align-items: center;
 padding: 50px;
-}
-.navbar{
-display: flex;
-flex-direction: row;
-align-items: center;
-padding: 0px 63px;
-gap: 58px;
-background: rgba(32, 144, 151, 0.29);
-width: 100%;
-height: 70px;
+} */
+.profileLinksSection{
+    width: 100%;
+    background-color: #212A3E;
+    margin: 0px;
+    padding: 2.5% 0px 2.5% 0px;
+
 }
 .navbar :hover{
     background-color: #146971;

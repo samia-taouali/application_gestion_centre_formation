@@ -21,11 +21,12 @@ if(!empty($_SESSION["id_app"])){
 
         if($password == $confirmpassword){
         $query = "INSERT INTO apprenant  VALUES('','$firstname','$lastname','$email','$password')";
-        // header("window.Location: login-admin.php");
+       
 
         mysqli_query($conn, $query);
 
         echo"<script> alert('Registration Successful'); </script>";
+        header('Location: index.php');
         }
         else{
         echo
@@ -37,6 +38,7 @@ if(!empty($_SESSION["id_app"])){
 ?>
 
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,44 +46,56 @@ if(!empty($_SESSION["id_app"])){
     <link rel="stylesheet" href="css/inscription.css">
     <title>Document</title>
 </head>
+
 <body>
-<div class="container mt-3">
-    <div class=" formSU text-center">
-        
-        <form class="tt row" method = "POST" action = ""  autocomplete="off">
-        <div class="title"><h2>E-learning</h2></div>
-            <div class="col-md-6">
-                <div class="inputs"> <input class="form-control" type="text" name = "firstname" placeholder="First Name" required value=""> </div>
-            </div>
-            <div class="col-md-6">
-              <div class="inputs">  <input class="form-control" type="text" name = "lastname" placeholder="Last Name" required value=""> </div>
-          </div>
+    <div class="container mt-3">
+        <div class=" formSU text-center">
+
+            <form class="tt row" method="POST" action="" autocomplete="off">
+                <div class="title">
+                    <h2>E-learning</h2>
+                </div>
+                <div class="col-md-6">
+                    <div class="inputs"> <input class="form-control" type="text" name="firstname"
+                            placeholder="First Name" required value=""> </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="inputs"> <input class="form-control" type="text" name="lastname" placeholder="Last Name"
+                            required value=""> </div>
+                </div>
 
 
-      <div class="col-md-6">
-        <div class="inputs"> <input class="form-control" type="email" name = "email" placeholder="Email" required value=""> </div>
-    </div>
+                <div class="col-md-6">
+                    <div class="inputs"> <input class="form-control" type="email" name="email" placeholder="Email"
+                            required value=""> </div>
+                </div>
 
-    <div class="col-md-6">
-      <div class="inputs"><input class="form-control" type="password" name = "password" placeholder="password" required value=""> </div>
-  </div>
+                <div class="col-md-6">
+                    <div class="inputs"><input class="form-control" type="password" name="password"
+                            placeholder="password" required value=""> </div>
+                </div>
 
-  <div class="col-md-6">
-    <div class="inputs"><input class="form-control" type="password" name = "confirmpassword" placeholder="Confirm password" required value=""> </div>
-</div>
+                <div class="col-md-6">
+                    <div class="inputs"><input class="form-control" type="password" name="confirmpassword"
+                            placeholder="Confirm password" required value=""> </div>
+                </div>
 
 
 
-        <div class="mt-3 ">
-          <button class="px-3 btn btn" type = "submit" name = "submit" >S'inscrire</button>
+                <div class="mt-3 ">
+                    <button class="px-3 btn btn" type="submit" name="submit">S'inscrire</button>
+                </div>
+                <div class="col-md-6">
+                    <div class="inputs">
+                        <p>vous avez déjà un compte? <span><a href="connexion.php" id="word">connectez -vous</a></span>
+                        </p>
+                    </div>
+                </div>
+
+            </form>
         </div>
-        <div class="col-md-6">
-    <div class="inputs"><p>vous avez déjà un compte? <span><a href="connexion.php" id="word">connectez -vous</a></span></p></div>
-</div>
+    </div>
 
-        </form>
-    </div>
-    </div>
-   
 </body>
+
 </html>
