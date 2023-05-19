@@ -1,12 +1,13 @@
 <?php
-require 'config.php';
-if(!empty($_SESSION["id_apprenant"])){
-    $id = $_SESSION["id_apprenant"];
-    $result = mysqli_query($conn, "SELECT * FROM apprenant WHERE id_apprenant = $id");
+require 'connect.php';
+if(!empty($_SESSION['id_app'])){
+
+    $id_apprenant=$_SESSION['id_app'];
+    $result = mysqli_query($conn, "SELECT * FROM apprenant WHERE id_app = $id_apprenant");
     $row = mysqli_fetch_assoc($result);
 }
 else{
-    header("Location: login.php");
+    header("Location:index.php");
 }
 ?>
 
@@ -17,7 +18,7 @@ else{
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="css/formation.css">
         
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kavoon&display=swap');
@@ -103,51 +104,23 @@ else{
 <body>
 
 
-   <!-- ======= Header/Navbar ======= -->
-   <nav class="navbar navbar-default navbar-trans navbar-expand-lg ">
-    <div class="container">
-    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-
-
-    <a class="nav-link navbar-brand text-brand" href="home.php">GesFormations</a>
-
-    <div class="navbar-collapse collapse justify-content-center" id="navbarDefault" >
-        <ul class="navbar-nav">
-
-        <li class="nav-item">
-            <a class="nav-link " href="home.php">Home</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link active" href="Formations.php">Formations</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link " href="">Contact</a>
-        </li>
-        </ul>
+<!-- nav -->
+<div class="navp">
+        <div class="icon">
+            <a href="index.php"><i class="fa-solid fa-arrow-left-long fa-xl" style="color: #ffffff;"></i></a>
+        </div>
+        <div class="logout"><a href="logout_user.php"> <i class="fa-solid fa-arrow-right-from-bracket"></i>Se
+                déconnecter</a> </div>
+    </div>
     </div>
 
-
-
-    <button class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-target="#loginModal">
-        <a href="Profile-personal.php" style="margin-right: 1rem; color: white; text-decoration :none;"><span><?php echo $row["firstname"] ; ?></span><i class="fa-solid fa-user mx-1"></i></a>
-
-        <a href="logout-user.php" style="color: white;"><i class="fa-solid fa-right-from-bracket"></i></a>
-    </button>
-
-    </div>
-</nav>
 
 <!-- Side-Bar -->
 
 <div class="row profileLinksSection  text-center">
     
 
-    <div class=" profileLinksdiv col-md-6">    <a href="Profile-inscription.php" class="profileLinks" style="color : #1fae51;">Formations en cours</a>
+    <div class=" profileLinksdiv col-md-6">    <a href="formation.php" class="profileLinks" style="color : #1fae51;">Formations en cours</a>
     </div>
     
     <div class=" profileLinksdiv col-md-6">    <a href="Profile-formation-passee.php" class="profileLinks" style="text-decoration: underline; color : red;">Formations passées</a>
@@ -166,10 +139,10 @@ else{
         <?php
 
 
-$sql = "SELECT * FROM inscription i
+$sql = "SELECTyhj* FROM apprenant_session i
 INNER JOIN session s ON s.id_session = i.id_session
 INNER JOIN formation f ON f.id_formation = s.id_formation 
-WHERE id_apprenant = $id 
+WHERE id_app = $id_apprenant
 AND (etat = 'cloturée' OR etat = 'annulée')
 ORDER BY i.id_session DESC";
 
@@ -184,7 +157,7 @@ echo ' <table class="table table-dark mt-5">
     <tr>
     <th scope="col">id_session</th>
     <th scope="col">Fromations</th>
-    <th scope="col">Categorie</th>
+    <th scope="col">Etat</th>
     <th scope="col">Resultat</th>
     <th scope="col">Date Evaluation</th>
     </tr>
@@ -202,7 +175,7 @@ while($row = mysqli_fetch_assoc($result)) {
         <th scope="row">' .$row['sujet']. '</th>
         <td>' .$row['etat']. '</td>
         <td>' .$row['resultat']. '</td>
-        <td>' .$row['date_validation']. '</td>
+        <td>' .$row['date_eval']. '</td>
     </tr>
     </tbody>
 ';

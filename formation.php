@@ -55,7 +55,8 @@ else{
 $historique = "SELECT * FROM apprenant_session ms  
 INNER JOIN session s ON s.id_session = ms.id_session
 INNER JOIN formation f ON f.id_formation = s.id_session
-WHERE ms.id_app = $id_apprenant";
+WHERE ms.id_app = $id_apprenant
+AND (etat = 'en cours' OR  etat= 'Inscription achevée' OR etat = 'en cours d\\'inscription')";
 
 $result = mysqli_query($conn, $historique);
 
@@ -78,6 +79,13 @@ while($row = mysqli_fetch_assoc($result)) {
 
 echo '</div>';
 }
+else{
+
+    echo'<div class="alert alert-danger mt-5 latestsProductsdiv row" role="alert">
+    <h1 class ="text-center">There is no Training available here:(</h1>
+  </div>';
+}
+
 ?>
 
 
